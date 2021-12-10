@@ -131,14 +131,19 @@ public class MSApplication {
         }
 
         // find most frequency company
-        Map.Entry<ProducerEntity, Integer> company = null;
-        for (Map.Entry<ProducerEntity, Integer> companyEntry : companyFrequencyMap.entrySet()) {
-            if (company == null || companyEntry.getValue() > company.getValue()) {
-                company = companyEntry;
+        if (companyFrequencyMap.size() > 0) {
+            Map.Entry<ProducerEntity, Integer> company = null;
+            for (Map.Entry<ProducerEntity, Integer> companyEntry : companyFrequencyMap.entrySet()) {
+                if (company == null || companyEntry.getValue() > company.getValue()) {
+                    company = companyEntry;
+                }
             }
+
+            return company.getKey().getName();
         }
 
-        return company.getKey().getName();
+        return null;
+
     }
 
     /**
