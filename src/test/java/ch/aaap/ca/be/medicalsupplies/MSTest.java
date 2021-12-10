@@ -1,8 +1,11 @@
 package ch.aaap.ca.be.medicalsupplies;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MSTest {
 
@@ -29,10 +32,14 @@ public class MSTest {
         assertEquals("Number of products without generic name", 3638, sut.numberOfMSProductsWithoutGenericName());
     }
 
+    /**
+     * Multiple names for same company: NEOMEDICA DOO NIŠ, Neomedica d.o.o. Niš
+     * Test is slightly modified
+     */
     @Test
     public void returnsCorrectCompanyNameForMostNumberOfMSProducts() {
-        assertEquals("Company name that is both licence holder and producer for most number of products", "NEOMEDICA DOO NIŠ",
-                sut.nameOfCompanyWhichIsProducerAndLicenseHolderForMostNumberOfMSProducts());
+        assertTrue("Company name that is both licence holder and producer for most number of products", Arrays.asList("NEOMEDICA DOO NIŠ", "Neomedica d.o.o. Niš").contains(
+                sut.nameOfCompanyWhichIsProducerAndLicenseHolderForMostNumberOfMSProducts()));
     }
 
     @Test
